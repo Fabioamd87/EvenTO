@@ -2,6 +2,13 @@
 session_start();
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EvenTO</title>
+</head>
+<body>
 <h1>Conoscersi con EvenTO🎉</h1>
 <p>Portale per organizzare eventi e conoscenze.</p>
 
@@ -18,3 +25,5 @@ else{
     echo '<a href="login.php">Login</a> | <a href="register.php">Registrati</a>';
 }
 ?>
+</body>
+</html>

@@ -26,6 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EvenTO</title>
+</head>
+<body>
+
 <h2>Login</h2>
 <form method="POST">
     <input type="text" name="email" placeholder="Email" required><br>
@@ -34,3 +42,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 <?php if (isset($error)) echo "<p>$error</p>"; ?>
 <a href="index.php">Home</a>
+</body>
+</html>
