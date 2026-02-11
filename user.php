@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persone</title>
+</head>
+<body>
+
 <?php
 include 'db.php';
 session_start();
@@ -37,3 +45,5 @@ $age= intval($datediff*0.00000003170979);
 
 <a href="index.php">Home</a>
 <a href="logout.php">Logout</a>
+</body>
+</html>

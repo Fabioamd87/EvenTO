@@ -49,7 +49,20 @@
                             $error = 'Errore.';
                         }
                     }
-                    else echo 'no free seats';
+                    else echo "Nessun posto disponibile nell'auto di ",$participant['name'];
+                }
+            }
+            else{
+                #insert the user in waiting list
+                $stmt = $pdo->prepare("INSERT INTO partecipations (
+                    user_id,event_id,with_car
+                    ) VALUES (?, ?, ?)");
+                try {
+                    $stmt->execute([$user_id, $event_id, 'false']);
+                    header('Location: event.php?id='. $event_id);
+                    exit();                            
+                } catch (PDOException $e) {
+                    $error = 'Errore.';
                 }
             }
         }

@@ -18,11 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $city = $_POST['city'];
     $date = $_POST['date'];
-    $with_car = $_POST['with_car'];
+    $car_needed = $_POST['car_needed'];
 
-    $stmt = $pdo->prepare("INSERT INTO events (organizer_id, name, with_car, city, date) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO events (organizer_id, name, car_needed, city, date) VALUES (?, ?, ?, ?, ?)");
     try {
-        $stmt->execute([$user['id'], $name, $with_car, $city, $date]);
+        $stmt->execute([$user['id'], $name, $car_needed, $city, $date]);
         header('Location: events.php');
         exit();
     } catch (PDOException $e) {

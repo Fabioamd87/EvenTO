@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EvenTO</title>
+</head>
+<body>
+
 <?php
 include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -5,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $name = $_POST['name'];
-    $telegram = $_POST['telegram'];
+    $instagram = $_POST['instagram'];
     $city = $_POST['city'];
     $birthday = $_POST['birthday'];
 
-    $stmt = $pdo->prepare("INSERT INTO users (email, password, name, telegram, city, birthday) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO users (email, password, name, instagram, city, birthday) VALUES (?, ?, ?, ?, ?, ?)");
     try {
-        $stmt->execute([$email, $password, $name, $telegram, $city, $birthday]);
+        $stmt->execute([$email, $password, $name, $instagram, $city, $birthday]);
         header('Location: login.php');
         exit();
     } catch (PDOException $e) {
@@ -22,13 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h2>Registrati</h2>
 <form method="POST">
-    <input type="text" name="email" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
-    <input type="name" name="name" placeholder="Nome" required><br>
-    <input type="text" name="telegram" placeholder="Telegram"><br>
-    <input type="text" name="city" placeholder="Città" required><br>
-    <input type="date" name="birthday" placeholder="Data di nascita"><br>    
+    <label for="email">Email*: </label> <input type="text" id="email" name="email" placeholder="Email *" required><br>
+    <label for="password">Password*: </label> <input type="password" id="password" name="password" placeholder="Password *" required><br>
+    <label for="name">Nome*: </label> <input type="text" id="name" name="name" placeholder="Nome *" required><br>
+    <label for="city">Città*: </label> <input type="text" id="city" name="city" placeholder="Città *" required><br>
+    <label for="date">Data di Nascita: </label> <input type="date" id="birthday" name="birthday" placeholder="Data di nascita"><br>
+    <label for="instagram">Instagram: </label> <input type="text" id="instagram" name="instagram" placeholder="Instagram"><br><br>
+    <label for="nome">*Campi Obbligatori</label><br><br>
     <button type="submit">Registrati</button>
 </form>
 
+
 <?php if (isset($error)) echo "<p>$error</p>"; ?>
+
+</body>
+</html>

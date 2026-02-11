@@ -3,7 +3,7 @@ include 'db.php';
 session_start();
 
 if (isset($_SESSION['user'])) {
-    header('Location: myprofile.php');
+    header('Location: index2.php');
     exit();
 }
 
@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user['email'];
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['name'] = $user['name'];
         header('Location: index.php');
         exit();
     } else {
@@ -37,10 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2>Login</h2>
 <form method="POST">
     <input type="text" name="email" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required autocomplete="current-password"><br>
+    <input type="password" name="password" placeholder="Password" required autocomplete="current-password"><br><br>
     <button type="submit">Login</button>
 </form>
 <?php if (isset($error)) echo "<p>$error</p>"; ?>
+<br>
 <a href="index.php">Home</a>
 </body>
 </html>

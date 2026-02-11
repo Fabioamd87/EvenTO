@@ -1,29 +1,99 @@
-<?php include 'db.php';
-session_start();
-?>
-
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to EvenTO</title>
-</head>
-<body>
-<h1>Conoscersi con EvenTO🎉</h1>
-<p>Portale per organizzare eventi e conoscenze.</p>
+<html lang="en">
 
-<?php
-if (isset($_SESSION['user'])) {
-    echo 'Benvenuto ', htmlspecialchars($_SESSION['user']);
-    
-    echo '<p><a href="myprofile.php">Profilo</a></p>';
-    echo '<p><a href="events.php">Eventi</a></p>';
-    echo '<p><a href="people.php">Persone</a></p>';
-    echo '<p><a href="logout.php">Logout</a></p>';
-}
-else{
-    echo '<a href="login.php">Login</a> | <a href="register.php">Registrati</a>';
-}
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+        integrity="sha256-gvEnj2axkqIj4wbYhPjbWV7zttgpzBVEgHub9AAZQD4=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                evenTO 🎉
+            </div>
+
+            <input class="hamburger-button" type="checkbox" id="hamburger-button" />
+            <label for="hamburger-button">
+                <div></div>
+            </label>
+
+            <div class="menu">
+                <?php include("menu.php"); ?>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <h1>Portale per pubblicare eventi</h1>
+        <p>A fully-responsive CSS-only header for your websites and other web applications.</p>
+
+        <h2>Technology</h2>
+        <p>This header is built with absolutely no JavaScript dependency. It uses CSS flexbox and grid for positioning
+            (sorry older browsers!), and works on the smallest mobiles around.</p>
+
+        <p><strong>Please note:</strong> The menu uses a checkbox to open and close. You may need to add a handler to
+            ensure the checkbox is closed after a link is selected, if using React, or a similar library.</p>
+
+        <h1>Random Content Follows</h1>
+        <p>Below are some chunks of lorem ipsum to fill the space. Feel free to ignore them.</p>
+
+        <h2>More Content</h2>
+        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
+            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
+            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
+            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
+            Consequat dolor veniam consequat voluptate non ad laboris.</p>
+
+        <h2>More Content</h2>
+        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
+            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
+            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
+            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
+            Consequat dolor veniam consequat voluptate non ad laboris.</p>
+
+        <h2>More Content</h2>
+        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
+            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
+            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
+            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
+            Consequat dolor veniam consequat voluptate non ad laboris.</p>
+
+        <h2>More Content</h2>
+        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
+            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
+            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
+            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
+            Consequat dolor veniam consequat voluptate non ad laboris.</p>
+    </div>
+
+    <footer>
+        Footer
+    </footer>
+
+    <script>
+        /*
+            THIS IS NOT NECESSARY ON REGULAR WEBSITES
+ 
+            If you're using a library like React, you'll need the mobile menu to close once a link has been clicked.
+            That's all the below code does.
+        */
+
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const headerLinks = document.querySelectorAll('header .container .menu a');
+
+        headerLinks.forEach((link) => {
+            link.addEventListener('click', (e) => hamburgerButton.checked = false);
+        })
+    </script>
 </body>
+
 </html>

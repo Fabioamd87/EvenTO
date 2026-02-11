@@ -49,21 +49,23 @@ else{
     <p>Data: <?php echo $event['date']; ?></p>
 
     Lista Partecipanti:
-    <?php 
-    $stmt = $pdo->prepare(
-        "SELECT id,name,with_car,seats,car_id
-        FROM users
-        JOIN partecipations ON users.id = partecipations.user_id
-        WHERE partecipations.event_id = ?");
-    $stmt->execute([$event['id']]);
-    $participants = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    <?php
+        $stmt = $pdo->prepare(
+            "SELECT id,name,with_car,seats,car_id
+            FROM users
+            JOIN partecipations ON users.id = partecipations.user_id
+            WHERE partecipations.event_id = ?");
+        $stmt->execute([$event['id']]);
+        $participants = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
     <ul>
+
     <?php
     $participans_ids = [];
     if ($participants){
         foreach ($participants as $participant){
+            #partecipante guidante
             if ($participant['id'] == $participant['car_id']){
                 echo '<li><a href="user.php?id='.$participant['id'].'"> ', $participant['name'].'</a> 🚗</li>';
                 $seats = $participant['seats'];
@@ -89,7 +91,9 @@ else{
                     echo '</ul>';                   
                 }
             }
-            elseif($participant['with_car'] == 'false' AND $participant['car_id'] == ''){
+            #partecipanti senza auto / o evento senza auto
+            #null per eventi senza auto, false per partecipanti senza auto ad un evento con auto richiesta
+            elseif($participant['with_car'] === null OR $participant['with_car'] === 'false'){
                 echo '<li><a href="user.php?id='.$participant['id'].'"> ', $participant['name'].'</a></li>';
             }
             #used to check if a user is already participating
@@ -98,13 +102,13 @@ else{
     } else{
         echo 'Nessun partecipante';
     }
-    ?>
+?>
 
     </ul>
     <form action="eventactions.php" method="POST" >
         <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
         <input type="hidden" name="event_id" value="<?php echo $_GET['id']; ?>">
-        <input type="hidden" name="with_car" value="<?php echo $event['with_car']; ?>">
+        <input type="hidden" name="car_needed" value="<?php echo $event['car_needed']; ?>">
         
         <?php
         #check if the user is already in the participants list
@@ -114,9 +118,7 @@ else{
         else{
             echo '<button type="submit" name="action" value="leave">Cancellati</button>';
         }
-        ?>
-        
-        <?php
+
         echo '<br><br>';
         #if the user is the organizer he can cancel the event
         if ($user['id'] == $event['organizer_id']){

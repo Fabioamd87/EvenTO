@@ -35,7 +35,7 @@ echo '<h1> Eventi:</h1>
 </tr>';
 
 #show events
-foreach ($events as $event) {
+foreach ($events as $event){
     #print_r($events);
     $stmt = $pdo->prepare("SELECT name FROM users WHERE id = ?");
     $stmt->execute([$event['organizer_id']]);
@@ -57,9 +57,9 @@ foreach ($events as $event) {
     <input type="text" name="city" placeholder="Città" required><br>
     <input type="date" name="date" placeholder="Data"><br>
     <label>Con auto?:</label>
-    <select name="with_car" id="event_type">
-        <option value="true">Si</option>
+    <select name="car_needed" id="event_type"> <!--rename in car needed -->
         <option value="false">No</option>
+        <option value="true">Si</option>
     </select><br>
     <button type="submit">Invia</button>
 </form>

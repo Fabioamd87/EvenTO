@@ -22,12 +22,12 @@ try {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         organizer_id TEXT,
         name TEXT,
-        with_car TEXT,
+        car_needed TEXT,
         city TEXT,
         date TEXT
     )");
 
-    // Creazione tabella eventi se non esiste
+    // Creazione tabella partecipazioni se non esiste
     $pdo->exec("CREATE TABLE IF NOT EXISTS partecipations (
         user_id INT,
         event_id INT,
@@ -40,7 +40,7 @@ try {
         FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
     )");
 
-    // Creazione tabella eventi se non esiste
+    // Creazione tabella macchine se non esiste
     $pdo->exec("CREATE TABLE IF NOT EXISTS cars (
         owner_id INT,
         seats INT,

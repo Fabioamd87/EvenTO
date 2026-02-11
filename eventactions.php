@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $event_id = $_POST['event_id'];
     $action = $_POST['action'];
     
-    if ($_POST['with_car']){$with_car = $_POST['with_car'];}else{$with_car=null;};
+    if ($_POST['car_needed']){$car_needed = $_POST['car_needed'];}else{$with_car=null;};
 
     switch ($action){
         case 'join':
-            if ($with_car == 'true'){
+            if ($car_needed === 'true'){
                 header('Location: car.php?id='. $event_id);
                 exit();
             }else{
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             break;
         case 'leave':
-            if ($with_car == 'true'){
+            if ($car_needed === 'true'){
                 #check if the user has passangers
                 $stmt = $pdo->prepare("SELECT user_id, car_id FROM partecipations WHERE car_id = ?");
                 $stmt->execute([$user_id]);
