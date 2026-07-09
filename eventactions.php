@@ -1,4 +1,5 @@
 <?php
+
 include 'db.php';
 session_start();
 if (!isset($_SESSION['user'])) {
@@ -11,8 +12,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_POST['user_id'];
     $event_id = $_POST['event_id'];
     $action = $_POST['action'];
-    
-    if ($_POST['car_needed']){$car_needed = $_POST['car_needed'];}else{$with_car=null;};
+ 
+    #leggo i dettagli dell'evento
+    $stmt = $pdo->prepare(
+    "
+    SELECT car_needed
+    FROM events
+    WHERE id = ?
+    "
+    );
+
+    $stmt->execute([
+        $event_id
+    ]);
+
+    $car_needed = $stmt->fetchColumn();    
+
+    #if ($_POST['car_needed']){$car_needed = $_POST['car_needed'];}else{$with_car=null;};
 
     switch ($action){
         case 'join':

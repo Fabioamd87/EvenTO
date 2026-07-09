@@ -113,7 +113,7 @@ function clck(){
         const input = document.createElement("input");
         input.setAttribute("id", "auto");
         input.setAttribute("name", "seats");
-        input.setAttribute("placeholder", "Posti Auto");
+        input.setAttribute("placeholder", "Posti auto liberi");
 		const element = document.getElementById("selection");
         element.appendChild(input);
 

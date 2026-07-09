@@ -1,0 +1,181 @@
+/* CONTENITORE PAGINA */
+
+.event-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* HEADER */
+.event-header {
+    margin-bottom: 32px;
+}
+
+.event-header h1 {
+    margin: 0 0 8px;
+}
+
+.event-subtitle {
+    color: #777;
+}
+
+/* LAYOUT */
+
+.event-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(280px, 1fr);
+    gap: 32px;
+}
+
+
+/* COLONNA SINISTRA */
+
+.event-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+
+/* BOX RIUTILIZZABILI */
+
+.event-section {
+    padding: 24px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.event-section h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+
+/* INFO EVENTO */
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.event-info div {
+    line-height: 1.6;
+}
+
+
+
+/* DESCRIZIONE */
+
+.event-description p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+
+
+/* PARTECIPANTI */
+
+.participants-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.participants-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.participants-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* SIDEBAR */
+
+.event-sidebar {
+    position: sticky;
+    top: 24px;
+    height: fit-content;
+}
+
+
+
+/* CARD SIDEBAR */
+
+.sidebar-card {
+    padding: 24px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: white;
+}
+
+
+
+/* BOTTONE */
+
+.event-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.event-button:hover {
+    opacity: 0.9;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    .event-layout {
+        grid-template-columns: 1fr;
+    }
+    .event-sidebar {
+        position: static;
+    }
+}
+
+.event-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+}
+
+
+.danger {
+
+    margin-top: 20px;
+
+}
+
+.participants-list a,
+.driver a {
+
+    text-decoration: none;
+}
+
+
+.participants-list a:hover,
+.driver a:hover {
+
+    text-decoration: underline;
+}

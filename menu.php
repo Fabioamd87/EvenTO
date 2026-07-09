@@ -8,8 +8,9 @@ session_start();
     <ul>
         <li><a href="events.php">Eventi</a></li>
         <li><a href="people.php">Persone</a></li>
-        <li><a href="myprofile.php">Profilo</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="myprofile.php">
+                <?php echo $_SESSION['name']; ?>
+        </a></li>
     </ul>
 </nav>
 

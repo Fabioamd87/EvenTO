@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Header</title>
+    <title>EvenTO</title>
 
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
@@ -18,7 +18,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                evenTO 🎉
+                EvenTO
             </div>
 
             <input class="hamburger-button" type="checkbox" id="hamburger-button" />
@@ -45,27 +45,6 @@
 
         <h1>Random Content Follows</h1>
         <p>Below are some chunks of lorem ipsum to fill the space. Feel free to ignore them.</p>
-
-        <h2>More Content</h2>
-        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
-            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
-            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
-            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
-            Consequat dolor veniam consequat voluptate non ad laboris.</p>
-
-        <h2>More Content</h2>
-        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
-            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
-            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
-            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
-            Consequat dolor veniam consequat voluptate non ad laboris.</p>
-
-        <h2>More Content</h2>
-        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
-            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
-            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
-            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
-            Consequat dolor veniam consequat voluptate non ad laboris.</p>
 
         <h2>More Content</h2>
         <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem

@@ -1,0 +1,47 @@
+.events {
+  display: grid;
+  gap: 16px;
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #666;
+}
+
+.event-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(260px, 1fr);
+    gap: 32px;
+}
+
+.event-info {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.event-sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+@media (max-width: 800px) {
+
+    .event-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
