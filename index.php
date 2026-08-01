@@ -34,24 +34,11 @@
 
     <div class="page-content">
         <h1>Portale per pubblicare eventi</h1>
-        <p>A fully-responsive CSS-only header for your websites and other web applications.</p>
+        <p>Quest'app aiuta nella gestione dei partecipanti ad un evento</p>
 
-        <h2>Technology</h2>
-        <p>This header is built with absolutely no JavaScript dependency. It uses CSS flexbox and grid for positioning
-            (sorry older browsers!), and works on the smallest mobiles around.</p>
-
-        <p><strong>Please note:</strong> The menu uses a checkbox to open and close. You may need to add a handler to
-            ensure the checkbox is closed after a link is selected, if using React, or a similar library.</p>
-
-        <h1>Random Content Follows</h1>
-        <p>Below are some chunks of lorem ipsum to fill the space. Feel free to ignore them.</p>
-
-        <h2>More Content</h2>
-        <p>This is some page content. Ad minim non pariatur eiusmod adipisicing magna incididunt qui cupidatat. In Lorem
-            ullamco exercitation in laborum magna. Aliqua cillum do pariatur dolor adipisicing ea enim. Deserunt nisi
-            voluptate amet veniam aute ad duis cillum laborum occaecat nisi. Veniam occaecat eiusmod eu eu excepteur
-            nostrud consectetur velit Lorem incididunt consectetur in dolore. Non fugiat deserunt exercitation ullamco.
-            Consequat dolor veniam consequat voluptate non ad laboris.</p>
+        <h2>Auto</h2>
+        <p>In particolare, tramite questo portale è possibile partecipare ad un evento, che richiede un trasferimento in auto,
+            specificando se ci si unisce con la propia auto, indicando i posti liberi, o se si ha bisogno di un passaggio</p>
     </div>
 
     <footer>

@@ -1,5 +1,7 @@
-<?php include 'db.php';
-session_start();
+<?php include_once 'db.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <?php if (isset($_SESSION['user'])): ?>

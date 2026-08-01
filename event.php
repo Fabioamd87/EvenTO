@@ -124,6 +124,10 @@
                 <div>📅 <?= date('d/m/Y', strtotime($event['date'])) ?></div>
                 <div>📍 <?= htmlspecialchars($event['city']) ?></div>
                 <div>👤 <?= htmlspecialchars($organizer['name']) ?></div>
+                <?php echo $event['car_needed']; ?>
+                <?php if (!empty($event['car_needed']) && ($event['car_needed'] === 'true' || $event['car_needed'] === true || $event['car_needed'] == '1')): ?>
+                    <div>🚗 Auto necessaria</div>
+                <?php endif; ?>
             </div></section>
 
         <section class="event-section event-description">
@@ -133,138 +137,102 @@
                 htmlspecialchars($event['name'])
             )?>
             </p>
-    </section
-
-Lista Partecipanti:
-    <ul>
+    </section>
 
     <?php
     $cars = [];
     $waiting = [];
     $participants_ids = [];
 
+    if ($participants) {
+        foreach ($participants as $participant) {
+            $participants_ids[] = $participant['id'];
 
-    foreach ($participants as $participant){
-        #partecipante guidante new code
-        $participants_ids[] = $participant['id'];
-
-        if (
-            $participant['id']
-            == $participant['car_id']
-        ) {
-            $cars[$participant['id']] = [
-                'driver' => $participant,
-                'passengers' => [],
-                'free_seats' =>
-                    $participant['seats']
-            ];
+            if ($participant['id'] == $participant['car_id']) {
+                $cars[$participant['id']] = [
+                    'driver' => $participant,
+                    'passengers' => [],
+                    'free_seats' => $participant['seats']
+                ];
+            }
         }
 
         foreach ($participants as $participant) {
-            if (isset($cars[$participant['car_id']])
-                && $participant['id'] != $participant['car_id']
-            ) {
+            if (isset($cars[$participant['car_id']]) && $participant['id'] != $participant['car_id']) {
                 $cars[$participant['car_id']]['passengers'][] = $participant;
                 $cars[$participant['car_id']]['free_seats']--;
             }
         }
 
-        
         foreach ($participants as $participant) {
-            if (
-                $participant['with_car'] === 'false'
-            ) {
+            if ($participant['with_car'] === 'false') {
                 $waiting[] = $participant;
             }
         }
     }
     ?>
 
+    <section class="event-section">
+        <?php if (!empty($event['car_needed']) && ($event['car_needed'] === 'true' || $event['car_needed'] === true || $event['car_needed'] == 1)): ?>
+            <p>Lista Macchine:</p>
 
-<section class="event-section">
+            <?php foreach ($cars as $car): ?>
+                <div class="car-card">
+                    <div class="driver">
+                        🚗 <a href="user.php?id=<?= (int)$car['driver']['id'] ?>">
+                            <?= htmlspecialchars($car['driver']['name']) ?>
+                        </a>
+                    </div>
 
-<p>Lista Macchine:</p>
+                    <ul>
+                        <?php foreach ($car['passengers'] as $passenger): ?>
+                            <li>
+                                <a href="user.php?id=<?= (int)$passenger['id'] ?>">
+                                    <?= htmlspecialchars($passenger['name']) ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
 
-<?php foreach ($cars as $car): ?>
+                        <?php for ($i = 0; $i < $car['free_seats']; $i++): ?>
+                            <li class="empty">Posto libero</li>
+                        <?php endfor; ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
 
-<div class="car-card">
+            <p>In attesa di un passaggio:</p>
 
-<div class="driver">
+            <?php if ($waiting): ?>
+                <?php foreach ($waiting as $person): ?>
+                    <div class="car-card">
+                        <a href="user.php?id=<?= (int)$person['id'] ?>">
+                            <?= htmlspecialchars($person['name']) ?>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Nessuno in attesa.</p>
+            <?php endif; ?>
 
-🚗 <a href="user.php?id=<?= (int)$car['driver']['id'] ?>">
+        <?php else: ?>
 
-<?= htmlspecialchars(
-    $car['driver']['name']
-) ?>
+            <h2>Lista Partecipanti (<?= count($participants) ?>)</h2>
+            <?php if (!empty($participants)): ?>
+                <ul>
+                    <?php foreach ($participants as $participant): ?>
+                        <li>
+                            👤 <a href="user.php?id=<?= (int)$participant['id'] ?>">
+                                <?= htmlspecialchars($participant['name']) ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Nessun partecipante al momento.</p>
+            <?php endif; ?>
 
-</a>
-
-</div>
-
-<ul>
-
-<?php foreach (
-    $car['passengers']
-    as $passenger
-): ?>
-
-<li>
-
-<a
-href="user.php?id=<?= (int)$passenger['id'] ?>">
-
-<?= htmlspecialchars(
-    $passenger['name']
-) ?>
-
-</a>
-
-</li>
-
-<?php endforeach; ?>
-
-<?php for (
-    $i = 0;
-    $i < $car['free_seats'];
-    $i++
-): ?>
-
-<li class="empty">
-
-Posto libero
-
-</li>
-
-<?php endfor; ?>
-
-</ul>
-
-</div>
-
-<?php endforeach; ?>
-
-
-<p>In attesa di un passaggio:</p>
-
-<?php if ($waiting): ?>
-<?php foreach ($waiting as $person): ?>
-<div class="car-card">
-<a
-href="user.php?id=<?= (int)$person['id'] ?>">
-<?= htmlspecialchars(
-    $person['name']
-) ?>
-</a>
-</div>
-<?php endforeach; ?>
-<?php else: ?>
-<p>Nessuno in attesa.</p>
-<?php endif; ?>
-
-
-
-
-</section>
+        <?php endif; ?>
+    </section>
 
         </article>
 <aside class="event-sidebar">
